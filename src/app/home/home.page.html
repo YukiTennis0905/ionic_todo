@@ -1,0 +1,37 @@
+<!-- テキスト入力、リストに追加するボタン、追加されたタスクを表示するリスト、完了時にタスクを削除する削除ボタン -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      ToDo App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item>
+    <ion-input type="text" placeholder="Enter task"
+    [(ngModel)]="taskName"></ion-input>
+   
+    <div class="item-note" item-end>
+      <ion-button color="primary" (click)="addTask()">
+        <ion-icon name="add"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-item>
+  
+  <div>
+    <ion-list>
+      <!-- * ngFor Angularディレクティブを使用してtaskList変数を繰り返し処理 -->
+      <ion-item *ngFor="let todo of taskList; let i = index">
+        {{todo}}
+        <div class="item-note" slot="end">
+          <ion-button color="danger" clear (click)="deleteTask(i)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
